@@ -2,15 +2,9 @@
 
 require_relative "./quartermaster/version"
 require_relative "./quartermaster/cli"
+require "pry"
 
 module Quartermaster
   class Error < StandardError; end
   # Your code goes here...
 end
-
-#This is a test
-#A what?
-#A test.
-#A what? 
-#A test.
-#Oh, a test.
