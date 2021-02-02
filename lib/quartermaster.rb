@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "quartermaster/version"
+require_relative "./quartermaster/version"
+require_relative "./quartermaster/cli"
 
 module Quartermaster
   class Error < StandardError; end
