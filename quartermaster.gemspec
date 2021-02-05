@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "json"
   spec.add_development_dependency "rest-client"
+  spec.add_development_dependency "colorize"
 
 
   # Uncomment to register a new dependency of your gem
