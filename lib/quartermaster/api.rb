@@ -9,10 +9,13 @@ class Quartermaster::API
         end
     end
 
-    def self.item_details(magic_item)
-        url = 'https://www.dnd5eapi.co/api/magic-items/#{magic_item.index}'
+    def self.item_details
+        url = 'https://www.dnd5eapi.co/api/magic-items/adamantine-armor'
         get_item = RestClient.get(url)
         @magic_item = JSON.parse(get_item)
+
+        magic_item.equip_category["equipment-category"]
+        magic_item.desc["desc"]
     end
 
 end
