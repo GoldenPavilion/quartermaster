@@ -3,7 +3,6 @@ class Quartermaster::CLI
     def call
         greeting
         Quartermaster::API.get_items
-        binding.pry
         #present user with equipment categories
         #get user input - based on index number they select
         #present user with a list of items of the categories they selected
