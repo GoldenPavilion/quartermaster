@@ -5,7 +5,7 @@ class Quartermaster::API
         @items = JSON.parse(get_items)["results"]
 
         @items.each do |magic_item|
-            MagicItem.new(name: magic_item["name"], index: magic_item["index"])
+            MagicItem.new(magic_item["name"], magic_item["index"])
             binding.pry
         end
     end
