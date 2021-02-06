@@ -6,6 +6,7 @@ class Quartermaster::API
 
         @items.each do |magic_item|
             MagicItem.new(name: magic_item["name"], index: magic_item["index"])
+            binding.pry
         end
     end
 

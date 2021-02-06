@@ -4,8 +4,8 @@
 
 basic concept:
 
--- user is asked to select from a list of magical item types
--- user is provided a list of magical items of the type they selected
+-- DONE user is asked to select from a list of magical item types
+-- DONE user is provided a list of magical items of the type they selected
 -- user selects item they'd like to review
 -- user sees event details 
 

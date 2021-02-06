@@ -2,11 +2,12 @@ class Quartermaster::CLI
 
     def call
         greeting
-        input = gets.strip.chomp
-        display_categories(input)
-        cat_input = gets.strip.to_i
+        #input = gets.strip.chomp
+        #display_categories(input)
+        #cat_input = gets.strip.to_i
+        #display_items(cat_input ) - prints out list of items based on category
 
-        #Quartermaster::API.item_details
+        Quartermaster::API.get_items
         
         #DONE present user with equipment categories
         #get user input - based on index number they select
