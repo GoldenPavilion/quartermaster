@@ -63,10 +63,10 @@ class Quartermaster::CLI
             Quartermaster::API.item_details(magic_item)
             
             puts "Name: #{magic_item.name}"
-            puts "Type: #{magic_item.equip_category}"
-            puts "Desc: #{magic_item.desc}"
+            puts "Type: #{magic_item.desc[0]}"
+            puts "Desc: #{magic_item.desc[1]}"
+            binding.pry
         end
     end
-
 
 end
