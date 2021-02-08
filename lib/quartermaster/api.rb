@@ -11,10 +11,10 @@ class Quartermaster::API
 
     def self.item_details(magic_item)
         get_item = RestClient.get("https://www.dnd5eapi.co/api/magic-items/#{magic_item.index}")
-        @magic_item = JSON.parse(get_item)
+        magic_item_info = JSON.parse(get_item)
 
-        magic_item.equip_category["equipment-category"]
-        magic_item.desc["desc"]
+        magic_item.equip_category = magic_item_info["equipment-category"]
+        magic_item.desc = magic_item_info["desc"]
     end
 
 end

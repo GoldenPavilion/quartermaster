@@ -7,6 +7,8 @@ class Quartermaster::CLI
         #cat_input = gets.strip.to_i
         #display_items(cat_input) - prints out list of items based on category
         display_items(input)
+        mag_input = gets.strip.to_i
+        display_magic_item(mag_input)
 
 
         
@@ -54,4 +56,17 @@ class Quartermaster::CLI
             puts "Which item would you like to review? (Choose Number)"
         end
     end
+
+    def display_magic_item(input)
+        if input.to_i.between?(1, MagicItem.all.length)
+            magic_item = MagicItem.all[input - 1]
+            Quartermaster::API.item_details(magic_item)
+            
+            puts "Name: #{magic_item.name}"
+            puts "Type: #{magic_item.equip_category}"
+            puts "Desc: #{magic_item.desc}"
+        end
+    end
+
+
 end
