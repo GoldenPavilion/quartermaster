@@ -2,12 +2,13 @@ class Quartermaster::CLI
 
     def call
         greeting
-        #input = gets.strip.chomp
+        input = gets.strip.chomp
         #display_categories(input)
         #cat_input = gets.strip.to_i
-        #display_items(cat_input ) - prints out list of items based on category
+        #display_items(cat_input) - prints out list of items based on category
+        display_items(input)
 
-        Quartermaster::API.get_items
+
         
         #DONE present user with equipment categories
         #get user input - based on index number they select
@@ -38,6 +39,19 @@ class Quartermaster::CLI
             puts "8. Wands"
             puts "9. Weapons"
             puts "10. Some of my most Wondrous Items"
+        end
+    end
+
+    def display_items(input)
+        if input == "y"
+            puts "Let's see what we have here..."
+            puts " "
+            Quartermaster::API.get_items
+            MagicItem.all.each.with_index(1) do |magic_item, index|
+                puts "#{index}. #{magic_item.name}"
+            end
+            puts " "
+            puts "Which item would you like to review? (Choose Number)"
         end
     end
 end
