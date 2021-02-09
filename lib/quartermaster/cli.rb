@@ -62,7 +62,7 @@ class Quartermaster::CLI
             
             puts "Name: #{magic_item.name}"
             puts "Type: #{magic_item.desc[0]}"
-            puts "Desc: #{magic_item.desc[1..20]}"
+            puts "Desc: #{magic_item.desc[1..20].join(",")}"
         end
         puts " "
         puts "Would you like to take another gander? (y/n)"
