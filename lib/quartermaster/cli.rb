@@ -9,8 +9,6 @@ class Quartermaster::CLI
         display_items(input)
         mag_input = gets.strip.to_i
         display_magic_item(mag_input)
-
-
         
         #DONE present user with equipment categories
         #get user input - based on index number they select
@@ -53,19 +51,27 @@ class Quartermaster::CLI
                 puts "#{index}. #{magic_item.name}"
             end
             puts " "
-            puts "Which item would you like to review? (Choose Number)"
+            puts "Which item would you like to review? (Choose Number or 'exit' to walk away...for your own good.)"
         end
     end
 
     def display_magic_item(input)
-        if input.to_i.between?(1, MagicItem.all.length)
+        if input.to_i.between?(1, MagicItem.all.length) && input != "exit"
             magic_item = MagicItem.all[input - 1]
             Quartermaster::API.item_details(magic_item)
             
             puts "Name: #{magic_item.name}"
             puts "Type: #{magic_item.desc[0]}"
-            puts "Desc: #{magic_item.desc[1]}"
-            binding.pry
+            puts "Desc: #{magic_item.desc[1..20]}"
+        end
+        puts " "
+        puts "Would you like to take another gander? (y/n)"
+        exit_input = gets.strip 
+        if exit_input == "y"
+            MagicItem.clear
+            display_items(exit_input)
+            mag_input = gets.strip.to_i
+            display_magic_item(mag_input)
         end
     end
 
