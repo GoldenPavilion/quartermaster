@@ -5,11 +5,14 @@ class Quartermaster::CLI
         input = gets.strip.chomp
             if input == "browse"
                 display_items
+                mag_input = gets.strip.to_i
+                display_magic_item(mag_input)
             elsif input == "random"
                 MagicItem.random
             end
-        mag_input = gets.strip.to_i
-        display_magic_item(mag_input)
+        #mag_input = gets.strip.to_i
+        #display_magic_item(mag_input)
+        exit_prompt
     end
 
     def greeting
@@ -42,15 +45,34 @@ class Quartermaster::CLI
         end
 
         #create a separate "exit" method?
+        #puts " "
+        #puts "Would you like to take another gander? (y/n)".colorize(:light_blue)
+        #exit_input = gets.strip.chomp
+        #if exit_input == "y"
+            #MagicItem.clear
+            #display_items
+            #mag_input = gets.strip.to_i
+            #display_magic_item(mag_input)
+        #end
+    end
+
+    def exit_prompt
         puts " "
         puts "Would you like to take another gander? (y/n)".colorize(:light_blue)
-        exit_input = gets.strip 
+        exit_input = gets.strip.chomp
         if exit_input == "y"
-            MagicItem.clear
-            display_items(exit_input)
-            mag_input = gets.strip.to_i
-            display_magic_item(mag_input)
-        end
+            puts "Would you like to browse or receive a random gift? (browse/random)".colorize(:light_blue)
+            final_input = gets.strip.chomp
+            if final_input == "browse"
+                MagicItem.clear
+                display_items
+                mag_input = gets.strip.to_i
+                display_magic_item(mag_input)
+            elsif final_input == "random"
+                MagicItem.random
+            end
+        exit_prompt
+        end 
     end
     
 end
