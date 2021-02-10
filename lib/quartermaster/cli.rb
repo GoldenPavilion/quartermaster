@@ -27,7 +27,7 @@ class Quartermaster::CLI
         end
     end
 
-    def display_magic_item(input)
+    def display_magic_item(input = nil)
         puts "An interesting choice...".colorize(:light_blue)
 
         if input.to_i.between?(1, MagicItem.all.length) && input != "exit"
@@ -48,4 +48,5 @@ class Quartermaster::CLI
             display_magic_item(mag_input)
         end
     end
+    
 end

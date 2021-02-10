@@ -24,11 +24,14 @@ class MagicItem
         @@all.clear
     end
 
-    #def self.random
-        #Quartermaster::API.get_items
-        #MagicItem.all.each do |item|
-            #Quartermaster::API.item_details(item)
-        #end
-    #end
+    def self.random
+        Quartermaster::API.get_items
+        randomizer = MagicItem.all.sample
+        Quartermaster::API.item_details(randomizer)
+
+        puts "Name: #{randomizer.name}".colorize(:light_yellow)
+        puts "Type: #{randomizer.desc[0]}"
+        puts "Desc: #{randomizer.desc[1..20].join(",")}"
+    end
 
 end
