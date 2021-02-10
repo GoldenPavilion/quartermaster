@@ -29,13 +29,13 @@ class Quartermaster::CLI
             puts "#{index}. #{magic_item.name}"
         end
         puts " "
-        puts "Which item would you like to review? (Choose Number or 'exit' to walk away...for your own good.)".colorize(:light_blue)
+        puts "Which item would you like to review? (Choose Number)".colorize(:light_blue)
     end
 
     def display_magic_item(input = nil)
         puts "An interesting choice...".colorize(:light_blue)
 
-        if input.to_i.between?(1, MagicItem.all.length) && input != "exit"
+        if input.to_i.between?(1, MagicItem.all.length)
             magic_item = MagicItem.all[input - 1]
             Quartermaster::API.item_details(magic_item)
             
@@ -43,17 +43,6 @@ class Quartermaster::CLI
             puts "Type: #{magic_item.desc[0]}"
             puts "Desc: #{magic_item.desc[1..20].join(",")}"
         end
-
-        #create a separate "exit" method?
-        #puts " "
-        #puts "Would you like to take another gander? (y/n)".colorize(:light_blue)
-        #exit_input = gets.strip.chomp
-        #if exit_input == "y"
-            #MagicItem.clear
-            #display_items
-            #mag_input = gets.strip.to_i
-            #display_magic_item(mag_input)
-        #end
     end
 
     def exit_prompt
@@ -73,6 +62,5 @@ class Quartermaster::CLI
             end
         exit_prompt
         end 
-    end
-    
+    end   
 end
