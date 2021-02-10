@@ -9,6 +9,9 @@ class Quartermaster::CLI
                 display_magic_item(mag_input)
             elsif input == "random"
                 MagicItem.random
+            elsif input != "browse" || input != "random"
+                puts "Hmmm...perhaps you didn't hear me.".colorize(:light_red)
+                call
             end
         exit_prompt
     end
@@ -38,7 +41,7 @@ class Quartermaster::CLI
             Quartermaster::API.item_details(magic_item)
             
             puts "Name: #{magic_item.name}".colorize(:light_yellow)
-            puts "Type: #{magic_item.desc[0]}"
+            puts "Type: #{magic_item.desc[0]}".colorize(:light_green)
             puts "Desc: #{magic_item.desc[1..20].join(",")}"
         end
     end
