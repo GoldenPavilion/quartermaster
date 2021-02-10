@@ -24,4 +24,11 @@ class MagicItem
         @@all.clear
     end
 
+    #def self.random
+        #Quartermaster::API.get_items
+        #MagicItem.all.each do |item|
+            #Quartermaster::API.item_details(item)
+        #end
+    #end
+
 end
