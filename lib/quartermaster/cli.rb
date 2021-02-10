@@ -3,7 +3,11 @@ class Quartermaster::CLI
     def call
         greeting
         input = gets.strip.chomp
-        display_items(input)
+            if input == "browse"
+                display_items
+            elsif input == "random"
+                MagicItem.random
+            end
         mag_input = gets.strip.to_i
         display_magic_item(mag_input)
     end
@@ -11,20 +15,18 @@ class Quartermaster::CLI
     def greeting
         puts "Greetings morningrider.".colorize(:light_blue)
         puts "I am Severn Desh, quartermaster of all things arcane.".colorize(:light_blue)
-        puts "Would you like to see my offerings? (y/n)".colorize(:light_blue)
+        puts "Would you like to browse a bit or receive a random gift? (browse/random)".colorize(:light_blue)
     end
 
-    def display_items(input)
-        if input == "y"
-            puts "Let's see what we have here..."
-            puts " "
-            Quartermaster::API.get_items
-            MagicItem.all.each.with_index(1) do |magic_item, index|
-                puts "#{index}. #{magic_item.name}"
-            end
-            puts " "
-            puts "Which item would you like to review? (Choose Number or 'exit' to walk away...for your own good.)".colorize(:light_blue)
+    def display_items
+        puts "Let's see what we have here..."
+        puts " "
+        Quartermaster::API.get_items
+        MagicItem.all.each.with_index(1) do |magic_item, index|
+            puts "#{index}. #{magic_item.name}"
         end
+        puts " "
+        puts "Which item would you like to review? (Choose Number or 'exit' to walk away...for your own good.)".colorize(:light_blue)
     end
 
     def display_magic_item(input = nil)
@@ -38,6 +40,8 @@ class Quartermaster::CLI
             puts "Type: #{magic_item.desc[0]}"
             puts "Desc: #{magic_item.desc[1..20].join(",")}"
         end
+
+        #create a separate "exit" method?
         puts " "
         puts "Would you like to take another gander? (y/n)".colorize(:light_blue)
         exit_input = gets.strip 
