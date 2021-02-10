@@ -10,8 +10,6 @@ class Quartermaster::CLI
             elsif input == "random"
                 MagicItem.random
             end
-        #mag_input = gets.strip.to_i
-        #display_magic_item(mag_input)
         exit_prompt
     end
 

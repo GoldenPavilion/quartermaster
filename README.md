@@ -1,8 +1,6 @@
 # Quartermaster
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/quartermaster`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Quartermaster is a Ruby CLI application that streamlines the process of finding and selecting magic items and treasure in the tabletop roleplaying classic, Dungeons and Dragons. This app specifically references every item in the 5th edition Dungeon Master's Guide.
 
 ## Installation
 
@@ -22,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Execute the following in your terminal:
+
+    $ ruby ./bin/quartermaster
+
+Then follow the instructions onscreen.
 
 ## Development
 
