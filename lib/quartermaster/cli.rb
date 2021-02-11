@@ -12,7 +12,7 @@ class Quartermaster::CLI
                 mag_input = gets.strip.to_i
                 display_magic_item(mag_input)
             elsif input == "random"
-                MagicItem.random
+                random
             end
         exit_prompt
     end
@@ -45,9 +45,23 @@ class Quartermaster::CLI
             puts "Type: #{magic_item.desc[0]}".colorize(:light_green)
             puts "Desc:"
 
-            magic_item.desc[1..50].each do |l|
+            magic_item.desc[1..100].each do |l|
                 puts l
             end
+        end
+    end
+
+    def random
+        Quartermaster::API.get_items
+        randomizer = MagicItem.all.sample
+        Quartermaster::API.item_details(randomizer)
+
+        puts "Name: #{randomizer.name}".colorize(:light_yellow)
+        puts "Type: #{randomizer.desc[0]}".colorize(:light_green)
+        puts "Desc:"
+
+        randomizer.desc[1..100].each do |l|
+            puts l
         end
     end
 
@@ -64,7 +78,7 @@ class Quartermaster::CLI
                 mag_input = gets.strip.to_i
                 display_magic_item(mag_input)
             elsif final_input == "random"
-                MagicItem.random
+                random
             end
         exit_prompt
         end 
