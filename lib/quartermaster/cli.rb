@@ -3,15 +3,16 @@ class Quartermaster::CLI
     def call
         greeting
         input = gets.strip.chomp
+        until input == "browse" || input == "random" do
+            puts "Hmmm...perhaps you didn't hear me. (browse/random)".colorize(:light_red)
+            input = gets.strip.chomp
+        end
             if input == "browse"
                 display_items
                 mag_input = gets.strip.to_i
                 display_magic_item(mag_input)
             elsif input == "random"
                 MagicItem.random
-            elsif input != "browse" || input != "random"
-                puts "Hmmm...perhaps you didn't hear me.".colorize(:light_red)
-                call
             end
         exit_prompt
     end
@@ -42,7 +43,11 @@ class Quartermaster::CLI
             
             puts "Name: #{magic_item.name}".colorize(:light_yellow)
             puts "Type: #{magic_item.desc[0]}".colorize(:light_green)
-            puts "Desc: #{magic_item.desc[1..20].join(",")}"
+            puts "Desc:"
+
+            magic_item.desc[1..50].each do |l|
+                puts l
+            end
         end
     end
 
