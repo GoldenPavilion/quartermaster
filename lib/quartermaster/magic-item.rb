@@ -1,6 +1,6 @@
 class MagicItem
 
-    attr_accessor :name, :index, :equip_category, :desc 
+    attr_accessor :name, :index, :desc 
 
     @@all = []
 
