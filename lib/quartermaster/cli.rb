@@ -48,6 +48,8 @@ class Quartermaster::CLI
             magic_item.desc[1..100].each do |l|
                 puts l
             end
+        else 
+            puts "Hmmm...that doesn't seem quite right.".colorize(:light_red)
         end
     end
 
