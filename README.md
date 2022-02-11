@@ -18,6 +18,8 @@ Or install it yourself as:
 
     $ gem install quartermaster
 
+Video Demo: https://youtu.be/KqTyQPa4hIs
+
 ## Usage
 
 Execute the following in your terminal:

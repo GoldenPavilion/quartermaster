@@ -1,20 +1,19 @@
 class Quartermaster::CLI
 
     def call
+        Quartermaster::API.get_items
         greeting
-        input = gets.strip.chomp
-        until input == "browse" || input == "random" do
-            puts "Hmmm...perhaps you didn't hear me. (browse/random)".colorize(:light_red)
-            input = gets.strip.chomp
+        names = []
+
+        MagicItem.all.each do |item|
+            names << item.name
         end
-            if input == "browse"
-                display_items
-                mag_input = gets.strip.to_i
-                display_magic_item(mag_input)
-            elsif input == "random"
-                random
+
+        names.select do |name|
+            if name.start_with?("B")
+                puts "#{name}"
             end
-        exit_prompt
+        end
     end
 
     def greeting
